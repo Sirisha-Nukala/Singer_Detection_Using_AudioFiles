@@ -1,28 +1,104 @@
-# VocalSet Singer Classification (SingerSense)
+🎤 Singer Detection Using Audio Files
 
-## Overview
-This project applies machine learning to identify individual singers based on their vocal audio characteristics. By processing `.wav` audio files from the VocalSet dataset, the pipeline extracts key acoustic features and trains multiple classification models to recognize the singer's unique vocal footprint.
+A Machine Learning-based web application that identifies the singer of an uploaded audio file using audio feature extraction and classification techniques.
+
+🌐 Live Demo
+
+👉 https://singerdetection-byaudiofiles-siri.streamlit.app/
+
+📌 Project Overview
+
+This project focuses on audio classification, where the goal is to predict the singer from a given audio clip. It processes the audio, extracts meaningful features, and uses a trained machine learning model to make predictions.
+
+The application is deployed using Streamlit, providing a simple and interactive interface for users.
+
+🚀 Features
+
+🎧 Upload audio files (WAV format recommended)
+🔍 Extracts advanced audio features
+🤖 Predicts the singer using ML model
+⚡ Fast and user-friendly interface
+🌐 Fully deployed web application
+
+🧠 How It Works
+
+1. Audio Preprocessing
+Load audio file
+Normalize and standardize sampling rate
+2. Feature Extraction
+
+The following features are extracted:
+
+MFCC (Mel-Frequency Cepstral Coefficients)
+Chroma Features
+Spectral Contrast
+Zero Crossing Rate
+
+3. Model Training
+Dataset labeled with singer names
+Features used to train a classification model
+
+5. Prediction
+Extract features from uploaded audio
+Feed into trained model
+Display predicted singer
 
 
-## Dataset
-The project uses **VocalSet11**, a dataset of professional singers. The data processed consists of 3,613 individual audio samples across 20 distinct singers (9 female, 11 male). 
+🛠️ Tech Stack
+Programming Language: Python
+Libraries:
+Librosa (audio processing)
+NumPy, Pandas (data handling)
+Scikit-learn (machine learning)
+Framework: Streamlit (web app)
 
-## Project Structure
-* `feature_extraction.ipynb`: Crawls the `VocalSet11/FULL` directory, processes `.wav` files using `librosa`, and generates a labeled tabular dataset (`singer_features.csv`).
-* `model_training.ipynb`: Loads the extracted features, scales the data, and evaluates multiple machine learning classifiers using `scikit-learn`.
+📂 Project Structure
+Singer_Detection_Using_AudioFiles/
+│
+├── app.py                 # Streamlit app
+├── model.pkl             # Trained model
+├── features.py           # Feature extraction code
+├── requirements.txt      # Dependencies
+├── dataset/              # Audio dataset (optional)
+└── README.md             # Project documentation
 
-## Features Extracted
-For every 30-second audio window, the following features are extracted using `librosa`:
-* **MFCCs (1-13):** Mel-frequency cepstral coefficients representing the short-term power spectrum of the sound.
-* **Spectral Centroid:** Indicates where the "center of mass" of the spectrum is located (brightness of the sound).
-* **Zero-Crossing Rate (ZCR):** The rate at which the signal changes from positive to zero to negative.
-* **Chroma Mean:** Relates to the 12 different pitch classes.
+▶️ Installation & Setup
 
-## Models Evaluated
-The extracted features are scaled using `StandardScaler` and passed into several models:
-* **Logistic Regression:** Tested on both raw and scaled data, achieving ~73% accuracy on the scaled dataset.
-* **K-Nearest Neighbors (KNN):** Evaluated across various `k` values (from 2 to 24) using scaled data to find the optimal neighbor count.
-* **Decision Tree Classifier:** Evaluated on the dataset, achieving ~54-56% accuracy.
-* **Linear Regression:** Used as a baseline/experimental model, evaluated using R-squared.
+1️⃣ Clone the repository
+git clone https://github.com/Sirisha-Nukala/Singer_Detection_Using_AudioFiles.git
+cd Singer_Detection_Using_AudioFiles
+2️⃣ Create virtual environment (recommended)
+python -m venv venv
+venv\Scripts\activate   # For Windows
+3️⃣ Install dependencies
+pip install -r requirements.txt
+4️⃣ Run the application
+streamlit run app.py
 
-Evaluation metrics used across classification models include Accuracy, Precision, Recall, and F1-score (macro average).
+📸 Usage
+Open the web app
+Upload an audio file
+Click on Predict
+View the predicted singer 🎶
+
+⚠️ Limitations
+Works best with clean and noise-free audio
+Limited to trained singers only
+Accuracy depends on dataset size and quality
+🔮 Future Enhancements
+🎯 Improve accuracy using Deep Learning (CNN/RNN)
+🎵 Support more audio formats (MP3, FLAC)
+📊 Display confidence scores
+📚 Expand dataset with more singers
+🎛️ Add audio visualization
+
+🙌 Acknowledgements
+Librosa Documentation
+Scikit-learn Community
+Streamlit for easy deployment
+
+📬 Contact
+Feel free to reach out for feedback or collaboration!
+
+⭐ If you like this project
+Give it a ⭐ on GitHub and share it!
